@@ -17,7 +17,7 @@ export default class EmployeeController {
         });
     }
 
-    async saveEmployee(newEmployee: NewEmployee) {
+    async save(newEmployee: NewEmployee) {
         const result = await this.employeesCollection.insertOne(newEmployee);
         return result;
     }

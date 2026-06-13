@@ -13,6 +13,6 @@ export interface Employee {
     id: string;
 }
 
-export interface NewEmployee extends Omit<Employee, 'id'> {}
+export type NewEmployee = Omit<Employee, 'id'>;
 
-export interface EmployeeInDB extends WithId<NewEmployee> {}
+export type EmployeeInDB = WithId<NewEmployee>;
