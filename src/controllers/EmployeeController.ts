@@ -2,14 +2,14 @@ import type { Collection, MongoClient, ObjectId } from 'mongodb';
 import type { Employee, EmployeeInDB, NewEmployee } from '../types/Employee.js';
 
 export default class EmployeeController {
-    private mongoCollection: Collection<NewEmployee>;
+    private employeesCollection: Collection<NewEmployee>;
     constructor(mongoClient: MongoClient) {
-        this.mongoCollection = mongoClient.db('hrNet').collection<NewEmployee>('employee');
+        this.employeesCollection = mongoClient.db('hrNet').collection<NewEmployee>('employee');
     }
     get employees(): Promise<Employee[]> {
         return new Promise(async (resolve, rejects) => {
             try {
-                const employees = (await this.mongoCollection.find().toArray()).map((employee) => employeeAdapter(employee));
+                const employees = (await this.employeesCollection.find().toArray()).map((employee) => employeeAdapter(employee));
                 resolve(employees);
             } catch (error) {
                 rejects(error);
@@ -18,7 +18,7 @@ export default class EmployeeController {
     }
 
     async saveEmployee(newEmployee: NewEmployee) {
-        const result = await this.mongoCollection.insertOne(newEmployee);
+        const result = await this.employeesCollection.insertOne(newEmployee);
         return result;
     }
 }
