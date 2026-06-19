@@ -21,7 +21,6 @@ export default function employeeRouterFactory(controller: EmployeeController) {
     router.post('/', async (req, res) => {
         try {
             const { employee } = req.body || { employee: undefined };
-            console.log(req);
             if (!employee) return res.sendStatus(400);
             await controller.save(employee);
             res.sendStatus(201);
