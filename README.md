@@ -66,15 +66,15 @@ src/
 
 ### Employés
 
-| Méthode | Route       | Description                          | Corps attendu                  | Réponses      |
-|---------|-------------|--------------------------------------|--------------------------------|---------------|
-| GET     | `/employee` | Retourne la liste de tous les employés | —                              | 200, 404, 500 |
-| POST    | `/employee` | Crée un nouvel employé               | `{ "employee": { ...champs } }` | 201, 400, 500 |
+| Méthode | Route       | Description                            | Corps attendu                   | Réponses      |
+| ------- | ----------- | -------------------------------------- | ------------------------------- | ------------- |
+| GET     | `/employee` | Retourne la liste de tous les employés | —                               | 200, 404, 500 |
+| POST    | `/employee` | Crée un nouvel employé                 | `{ "employee": { ...champs } }` | 201, 400, 500 |
 
 Champs d'un employé :
 
 | Champ         | Type   |
-|---------------|--------|
+| ------------- | ------ |
 | `firstName`   | string |
 | `lastName`    | string |
 | `startDate`   | Date   |
@@ -84,18 +84,19 @@ Champs d'un employé :
 | `city`        | string |
 | `state`       | string |
 | `zipCode`     | string |
+| `id`          | string |
 
 ### Départements
 
-| Méthode | Route         | Description                             | Corps attendu                    | Réponses      |
-|---------|---------------|-----------------------------------------|----------------------------------|---------------|
-| GET     | `/department` | Retourne la liste de tous les départements | —                                | 200, 404, 500 |
-| POST    | `/department` | Crée un nouveau département             | `{ "department": { ...champs } }` | 201, 400, 500 |
+| Méthode | Route         | Description                                | Corps attendu                     | Réponses      |
+| ------- | ------------- | ------------------------------------------ | --------------------------------- | ------------- |
+| GET     | `/department` | Retourne la liste de tous les départements | —                                 | 200, 404, 500 |
+| POST    | `/department` | Crée un nouveau département                | `{ "department": { ...champs } }` | 201, 400, 500 |
 
 Champs d'un département :
 
 | Champ   | Type   |
-|---------|--------|
+| ------- | ------ |
 | `label` | string |
 | `value` | string |
 
