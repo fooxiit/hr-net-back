@@ -1,7 +1,11 @@
 import type DepartmentController from '../controllers/DepartmentController.js';
 import express from 'express';
+
+/** Crée le router Express pour les routes `/department` (GET liste, POST création). */
 export default function departmentRouterFactory(departmentController: DepartmentController) {
     const router = express.Router();
+
+    // Retourne la liste de tous les départements ; 404 si la base est vide.
     router.get('/', async (_req, res) => {
         try {
             const departments = await departmentController.departments;
@@ -12,6 +16,7 @@ export default function departmentRouterFactory(departmentController: Department
         }
     });
 
+    // Crée un département à partir du champ `department` du corps de la requête ; 400 si absent.
     router.post('/', async (req, res) => {
         const { department } = req.body;
         if (!department) return res.sendStatus(400);

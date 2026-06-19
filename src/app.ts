@@ -7,11 +7,15 @@ import departmentRouterFactory from './routes/departmentRouterFactory.js';
 import DepartmentController from './controllers/DepartmentController.js';
 import cors, { type CorsOptions } from 'cors';
 
+// Point d'entrée de l'application : connexion à la base de données, configuration Express et démarrage du serveur.
+
 const mongoDBClient = await connectMongoClient('mongodb://localhost:27017');
 const employeeController = new EmployeeController(mongoDBClient);
 const departmentController = new DepartmentController(mongoDBClient);
 const app = express();
 const port = 3000;
+
+// Autorise uniquement les requêtes provenant de localhost.
 const corsOption: CorsOptions = {
     origin: (origin, callBack) => {
         console.info('origin|', origin, origin?.includes('localhost'));

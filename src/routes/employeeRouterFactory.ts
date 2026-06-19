@@ -1,7 +1,11 @@
 import type EmployeeController from '../controllers/EmployeeController.js';
 import express from 'express';
+
+/** Crée le router Express pour les routes `/employee` (GET liste, POST création). */
 export default function employeeRouterFactory(controller: EmployeeController) {
     const router = express.Router();
+
+    // Retourne la liste de tous les employés ; 404 si la base est vide.
     router.get('/', async (_req, res) => {
         try {
             const employees = await controller.employees;
@@ -13,6 +17,7 @@ export default function employeeRouterFactory(controller: EmployeeController) {
         }
     });
 
+    // Crée un employé à partir du champ `employee` du corps de la requête ; 400 si absent.
     router.post('/', async (req, res) => {
         try {
             const { employee } = req.body || { employee: undefined };

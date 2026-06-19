@@ -1,5 +1,6 @@
 import { MongoClient, type MongoClientOptions } from 'mongodb';
 
+/** Établit et retourne une connexion au serveur MongoDB à l'URL donnée. */
 export default async function connectMongoClient(url: string, option?: MongoClientOptions) {
     try {
         const client = new MongoClient(url, option);
